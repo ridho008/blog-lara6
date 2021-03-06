@@ -262,8 +262,15 @@
          <!-- Content -->
          <div class="u-content">
             <!-- Content Body -->
-             @yield('content')
-            
+            <div class="u-body">
+               <div class="mb-4">
+                  <h1 class="h2 mb-2">@yield('sub-title')</h1>
+                  @if(session()->get('success'))
+                     <div class="alert alert-success">{{ session()->get('success') }}</div>
+                  @endif
+                  @yield('content')
+               </div>
+            </div>
             <!-- End Content Body -->
 
             <!-- Footer -->
