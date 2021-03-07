@@ -29,25 +29,25 @@
                <a class="u-sidebar-nav-menu__link" href="#"
                   data-target="#menuItemUIBase">
                   <span class="ti-paint-roller u-sidebar-nav-menu__item-icon"></span>
-                  <span class="u-sidebar-nav-menu__item-title">UI Base</span>
+                  <span class="u-sidebar-nav-menu__item-title">Master Data</span>
                   <span class="ti-angle-down u-sidebar-nav-menu__item-arrow"></span>
                </a>
 
                <ul id="menuItemUIBase" class="u-sidebar-nav-menu u-sidebar-nav-menu--second-level" style="display: none;">
                   <!-- Colors -->
                   <li class="u-sidebar-nav-menu__item">
-                     <a class="u-sidebar-nav-menu__link" href="ui-colors.html">
+                     <a class="u-sidebar-nav-menu__link" href="{{ route('categori.index') }}">
                         <span class="u-sidebar-nav-menu__item-icon">C</span>
-                        <span class="u-sidebar-nav-menu__item-title">Colors</span>
+                        <span class="u-sidebar-nav-menu__item-title">Category</span>
                      </a>
                   </li>
                   <!-- End Colors -->
 
                   <!-- Typography -->
                   <li class="u-sidebar-nav-menu__item">
-                     <a class="u-sidebar-nav-menu__link" href="ui-typography.html">
+                     <a class="u-sidebar-nav-menu__link" href="{{ route('tag.index') }}">
                         <span class="u-sidebar-nav-menu__item-icon">T</span>
-                        <span class="u-sidebar-nav-menu__item-title">Typography</span>
+                        <span class="u-sidebar-nav-menu__item-title">Tags</span>
                      </a>
                   </li>
                   <!-- End Typography -->
