@@ -51,6 +51,15 @@
                      </a>
                   </li>
                   <!-- End Typography -->
+
+                  <!-- Posts -->
+                  <li class="u-sidebar-nav-menu__item">
+                     <a class="u-sidebar-nav-menu__link" href="{{ route('post.index') }}">
+                        <span class="u-sidebar-nav-menu__item-icon">P</span>
+                        <span class="u-sidebar-nav-menu__item-title">Posts</span>
+                     </a>
+                  </li>
+                  <!-- End Posts -->
                </ul>
             </li>
             <!-- End UI Base -->

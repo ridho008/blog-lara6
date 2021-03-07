@@ -18,3 +18,4 @@ Route::get('/', function () {
 Route::view('/home', 'home');
 Route::resource('/categori', 'CategoriController');
 Route::resource('/tag', 'TagController');
+Route::resource('/post', 'PostController');
