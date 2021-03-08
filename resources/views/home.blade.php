@@ -1,24 +1,24 @@
-@extends('layouts.app')
+@extends('layouts.app-backend')
 
 @section('title', 'Dashboard')
-@section('navbar-backend')
-
 @section('content')
-<div class="u-body">
-   <div class="mb-4">
-      <h1 class="h2 mb-2">Blank Page</h1>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Dashboard</div>
 
-      <!-- Breadcrumb -->
-      {{-- <nav aria-label="breadcrumb">
-         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Blank Page</li>
-        </ol>
-      </nav> --}}
-      <!-- End Breadcrumb -->
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
 
-     
-   </div>
-   <h1>Hallo DUnia</h1>
+                    You are logged in!
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection

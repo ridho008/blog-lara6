@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app-backend')
 
 @section('title', 'Add New Category')
 @section('navbar-backend')

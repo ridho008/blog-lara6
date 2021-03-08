@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app-backend')
 
 @section('title', 'Trash Posts')
 @section('navbar-backend')

@@ -10,15 +10,22 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Auth::routes();
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::view('/home', 'home');
-Route::resource('/categori', 'CategoriController');
-Route::resource('/tag', 'TagController');
-Route::get('/post/trashPost', 'PostController@trashPosts')->name('post.trash-post');
-Route::get('/post/{id}/restorePost', 'PostController@restorePost')->name('post.restore-post');
-Route::delete('/post/{id}/deleteAny', 'PostController@deleteAny')->name('post.delete-any');
-Route::resource('/post', 'PostController');
+// Route::view('/home', 'home');
+
+Route::group(['middleware' => 'auth'], function() {
+   Route::get('/home', 'HomeController@index')->name('home');
+   Route::resource('/categori', 'CategoriController');
+   Route::resource('/tag', 'TagController');
+   Route::get('/post/trashPost', 'PostController@trashPosts')->name('post.trash-post');
+   Route::get('/post/{id}/restorePost', 'PostController@restorePost')->name('post.restore-post');
+   Route::delete('/post/{id}/deleteAny', 'PostController@deleteAny')->name('post.delete-any');
+   Route::resource('/post', 'PostController');
+});
+
+
+
