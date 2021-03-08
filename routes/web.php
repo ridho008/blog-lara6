@@ -18,4 +18,7 @@ Route::get('/', function () {
 Route::view('/home', 'home');
 Route::resource('/categori', 'CategoriController');
 Route::resource('/tag', 'TagController');
+Route::get('/post/trashPost', 'PostController@trashPosts')->name('post.trash-post');
+Route::get('/post/{id}/restorePost', 'PostController@restorePost')->name('post.restore-post');
+Route::delete('/post/{id}/deleteAny', 'PostController@deleteAny')->name('post.delete-any');
 Route::resource('/post', 'PostController');

@@ -1,12 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'Posts')
+@section('title', 'Trash Posts')
 @section('navbar-backend')
 
-@section('sub-title', 'Posts')
+@section('sub-title', 'Trash Posts')
 @section('content')
 <a href="{{ route('post.create') }}" class="btn btn-primary btn-sm mb-3">Add New Post</a>
-<a href="{{ route('post.trash-post') }}" class="btn btn-warning">All Trash Posts</a>
  <div class="card mb-5">
             <!-- Card Header -->
             <header class="card-header">
@@ -46,11 +45,11 @@
                       </td>
                       <td>{{ $post->categori->name }}</td>
                       <td>
-                        <a href="{{ route('post.edit', $post->id) }}" class="btn btn-info btn-sm text-uppercase mb-2 mr-2">Edit</a>
-                        <form action="{{ route('post.destroy', $post->id) }}" method="post">
+                        <a href="{{ route('post.restore-post', $post->id) }}" class="btn btn-info btn-sm text-uppercase mb-2 mr-2">Restore</a>
+                        <form action="{{ route('post.delete-any', $post->id) }}" method="post">
                           @csrf
                           @method('delete')
-                          <button type="submit" class="btn-sm btn btn-danger text-uppercase mb-2 mr-2">Delete</a>
+                          <button type="submit" class="btn-sm btn btn-danger text-uppercase mb-2 mr-2">Delete Any</a>
                         </form>
                       </td>
                     </tr>
