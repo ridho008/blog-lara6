@@ -60,6 +60,15 @@
                      </a>
                   </li>
                   <!-- End Posts -->
+
+                  <!-- Users -->
+                  <li class="u-sidebar-nav-menu__item">
+                     <a class="u-sidebar-nav-menu__link" href="{{ route('user.index') }}">
+                        <span class="u-sidebar-nav-menu__item-icon">U</span>
+                        <span class="u-sidebar-nav-menu__item-title">Users</span>
+                     </a>
+                  </li>
+                  <!-- End Users -->
                </ul>
             </li>
             <!-- End UI Base -->

@@ -8,6 +8,7 @@ use App\Categori;
 use App\Tags;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 class PostController extends Controller
 {
     /**
@@ -57,6 +58,7 @@ class PostController extends Controller
             'title' => $request->title,
             'slug' => Str::slug($request->title, '-'),
             'categori_id' => $request->categori_id,
+            'users_id' => Auth::id(),
             'content' => $request->content,
             'photo' => $newPhoto,
         ]

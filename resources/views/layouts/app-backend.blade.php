@@ -202,7 +202,7 @@
                      data-offset="0">
                      <img class="u-header-avatar img-fluid rounded-circle mr-md-3" src="assets/img-temp/avatars/img1.jpg" alt="User Profile">
                      <span class="text-dark d-none d-md-inline-flex align-items-center">
-                        Bruce Goodman
+                        Hallo {{  Auth::user()->name }}
                         <span class="ti-angle-down text-muted ml-4"></span>
                      </span>
                   </a>

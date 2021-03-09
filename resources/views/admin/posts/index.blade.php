@@ -26,6 +26,7 @@
                     <th>Title</th>
                     <th>Tag</th>
                     <th>Category</th>
+                    <th>Creator</th>
                     <th>Actions</th>
                   </tr>
                   </thead>
@@ -39,12 +40,11 @@
                       <td>{{ $post->title }}</td>
                       <td>
                         @foreach($post->tags as $tag)
-                          <ul>
-                            <li>{{ $tag->name }}</li>
-                          </ul>
+                          <span class="badge badge-pill badge-secondary">{{ $tag->name }}</span>
                         @endforeach
                       </td>
                       <td>{{ $post->categori->name }}</td>
+                      <td>{{ $post->users->name }}</td>
                       <td>
                         <a href="{{ route('post.edit', $post->id) }}" class="btn btn-info btn-sm text-uppercase mb-2 mr-2">Edit</a>
                         <form action="{{ route('post.destroy', $post->id) }}" method="post">
