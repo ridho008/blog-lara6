@@ -12,6 +12,7 @@
 */
 Auth::routes();
 Route::get('/', 'BlogController@index');
+Route::get('/post/{slug}', 'BlogController@content')->name('blog.content');
 
 // Route::view('/home', 'home');
 
