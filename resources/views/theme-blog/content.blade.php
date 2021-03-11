@@ -1,10 +1,12 @@
-
-@include('theme-blog.head')
 <?php
 use App\Categori;
+use App\Tags;
 
 $categori = Categori::all();
+$tags = Tags::all();
 ?>
+@include('theme-blog.head')
+
    <!-- SECTION -->
    {{-- Hot Posts --}}
    {{-- {{ dd(Request::path()) }}  --}}

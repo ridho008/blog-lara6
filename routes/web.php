@@ -15,6 +15,8 @@ Route::get('/', 'BlogController@index');
 Route::get('/content/{slug}', 'BlogController@content')->name('blog.content');
 Route::get('/list-posts', 'BlogController@listBlog')->name('blog.list');
 Route::get('/category/{categori}', 'BlogController@listCategory')->name('blog.category');
+Route::get('/tag/{tags}', 'BlogController@tags')->name('blog.tags');
+Route::get('/search', 'BlogController@search')->name('blog.search');
 
 // Route::view('/home', 'home');
 
