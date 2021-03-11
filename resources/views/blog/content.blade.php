@@ -5,6 +5,9 @@
 @endforeach
 @section('content')
 @foreach($post as $pos)
+<?php 
+$commentsCount = App\Reply::where('posts_id', $pos->id)->count();
+?>
 <div class="row">
    <div class="col-md-12">
       <!-- PAGE HEADER -->
@@ -20,7 +23,7 @@
                         <ul class="post-meta">
                            <li><a href="author.html">{{ $pos->users->name }}</a></li>
                            <li>{{ \Carbon\Carbon::parse($pos->created_at)->diffForHumans() }}</li>
-                           <li><i class="fa fa-comments"></i> 3</li>
+                           <li><i class="fa fa-comments"></i> {{ $commentsCount }}</li>
                            <li><i class="fa fa-eye"></i> 807</li>
                         </ul>
                      </div>
@@ -92,56 +95,29 @@
             <!-- /related post -->
 
             <!-- post comments -->
+            <?php
+            $comments = App\Reply::where('posts_id', $pos->id)->get();
+            ?>
                <div class="section-row">
                   <div class="section-title">
-                     <h3 class="title">3 Comments</h3>
+                     <h3 class="title">{{ $commentsCount }} Comments</h3>
                   </div>
                   <div class="post-comments">
                      <!-- comment -->
+                     @foreach($comments as $comment)
                      <div class="media">
                         <div class="media-left">
-                           <img class="media-object" src="./img/avatar-2.jpg" alt="">
+                           <img class="media-object" src="{{ asset('uploads/comments/avatar.jpg') }}" alt="">
                         </div>
                         <div class="media-body">
                            <div class="media-heading">
-                              <h4>John Doe</h4>
-                              <span class="time">5 min ago</span>
+                              <h4>{{ $comment->name }}</h4>
+                              <span class="time">{{ \Carbon\Carbon::parse($comment->created_at)->diffForHumans() }}</span>
                            </div>
-                           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                           <a href="#" class="reply">Reply</a>
-                           <!-- comment -->
-                           <div class="media media-author">
-                              <div class="media-left">
-                                 <img class="media-object" src="./img/avatar-1.jpg" alt="">
-                              </div>
-                              <div class="media-body">
-                                 <div class="media-heading">
-                                    <h4>John Doe</h4>
-                                    <span class="time">5 min ago</span>
-                                 </div>
-                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                 <a href="#" class="reply">Reply</a>
-                              </div>
-                           </div>
-                           <!-- /comment -->
+                           <p>{{ $comment->contents }}</p>
                         </div>
                      </div>
-                     <!-- /comment -->
-
-                     <!-- comment -->
-                     <div class="media">
-                        <div class="media-left">
-                           <img class="media-object" src="./img/avatar-3.jpg" alt="">
-                        </div>
-                        <div class="media-body">
-                           <div class="media-heading">
-                              <h4>John Doe</h4>
-                              <span class="time">5 min ago</span>
-                           </div>
-                           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                           <a href="#" class="reply">Reply</a>
-                        </div>
-                     </div>
+                     @endforeach
                      <!-- /comment -->
                   </div>
                </div>
@@ -152,30 +128,47 @@
                   <div class="section-title">
                      <h3 class="title">Leave a reply</h3>
                   </div>
-                  <form class="post-reply">
+                  @if(session()->get('success'))
+                     <div class="alert alert-success">{{ session()->get('success') }}</div>
+                  @endif
+                  <form class="post-reply" method="post" action="{{ route('reply.massage') }}">
+                     @csrf
+                     <input type="hidden" name="posts_id" value="{{ $pos->id }}">
                      <div class="row">
                         <div class="col-md-12">
                            <div class="form-group">
-                              <textarea class="input" name="message" placeholder="Message"></textarea>
+                              <textarea class="input @error('contents') is-invalid @enderror" name="contents" placeholder="Message">{{ old('contents') }}</textarea>
+                              @error('contents')
+                                  <div class="invalid-feedback">{{ $message }}</div>
+                              @enderror
                            </div>
                         </div>
                         <div class="col-md-4">
                            <div class="form-group">
-                              <input class="input" type="text" name="name" placeholder="Name">
+                              <input class="input @error('name') is-invalid @enderror" type="text" name="name" placeholder="Name" value="{{ old('name') }}">
+                              @error('name')
+                                  <div class="invalid-feedback">{{ $message }}</div>
+                              @enderror
                            </div>
                         </div>
                         <div class="col-md-4">
                            <div class="form-group">
-                              <input class="input" type="email" name="email" placeholder="Email">
+                              <input class="input @error('email') is-invalid @enderror" type="email" name="email" placeholder="Email" value="{{ old('email') }}">
+                              @error('email')
+                                  <div class="invalid-feedback">{{ $message }}</div>
+                              @enderror
                            </div>
                         </div>
                         <div class="col-md-4">
                            <div class="form-group">
-                              <input class="input" type="text" name="website" placeholder="Website">
+                              <input class="input @error('website') is-invalid @enderror" type="text" name="website" placeholder="Website" value="{{ old('website') }}">
+                              @error('website')
+                                  <div class="invalid-feedback">{{ $message }}</div>
+                              @enderror
                            </div>
                         </div>
                         <div class="col-md-12">
-                           <button class="primary-button">Submit</button>
+                           <button type="submit" class="primary-button">Submit</button>
                         </div>
 
                      </div>

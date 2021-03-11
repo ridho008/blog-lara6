@@ -24,4 +24,9 @@ class Posts extends Model
    {
       return $this->belongsTo('App\User');
    }
+
+   // public function reply()
+   // {
+   //    return $this->belongsTo('App\Reply');
+   // }
 }
