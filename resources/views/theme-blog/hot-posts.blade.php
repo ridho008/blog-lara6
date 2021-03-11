@@ -1,3 +1,13 @@
+<?php
+use App\Posts;
+$hotPostsRight = Posts::inRandomOrder()
+                ->take(2)
+                ->get();
+
+$hotPostsLeft = Posts::inRandomOrder()
+                ->take(1)
+                ->get();                
+?>
 <div class="section">
       <!-- container -->
       <div class="container">
@@ -5,53 +15,40 @@
          <div id="hot-post" class="row hot-post">
             <div class="col-md-8 hot-post-left">
                <!-- post -->
+               @foreach($hotPostsLeft as $hotPLeft)
                <div class="post post-thumb">
-                  <a class="post-img" href="blog-post.html"><img src="./img/hot-post-1.jpg" alt=""></a>
+                  <a class="post-img" href="{{ route('blog.content', $hotPLeft->slug) }}"><img src="{{ asset('uploads/posts/' . $hotPLeft->photo) }}" alt=""></a>
                   <div class="post-body">
                      <div class="post-category">
-                        <a href="category.html">Lifestyle</a>
+                        <a href="{{ route('blog.category', $hotPLeft->slug) }}">{{ $hotPLeft->categori->name }}</a>
                      </div>
-                     <h3 class="post-title title-lg"><a href="blog-post.html">Postea senserit id eos, vivendo periculis ei qui</a></h3>
+                     <h3 class="post-title title-lg"><a href="{{ route('blog.content', $hotPLeft->slug) }}">{{ $hotPLeft->title }}</a></h3>
                      <ul class="post-meta">
-                        <li><a href="author.html">John Doe</a></li>
-                        <li>20 April 2018</li>
+                        <li><a href="author.html">{{ substr($hotPLeft->users->name, 0,5) }}</a></li>
+                        <li>{{ \Carbon\Carbon::parse($hotPLeft->created_at)->diffForHumans() }}</li>
                      </ul>
                   </div>
                </div>
+               @endforeach
                <!-- /post -->
             </div>
             <div class="col-md-4 hot-post-right">
                <!-- post -->
+               @foreach($hotPostsRight as $hotPRight)
                <div class="post post-thumb">
-                  <a class="post-img" href="blog-post.html"><img src="./img/hot-post-2.jpg" alt=""></a>
+                  <a class="post-img" href="{{ route('blog.content', $hotPRight->slug) }}"><img src="{{ asset('uploads/posts/' . $hotPRight->photo) }}" alt=""></a>
                   <div class="post-body">
                      <div class="post-category">
-                        <a href="category.html">Lifestyle</a>
+                        <a href="{{ route('blog.category', $hotPRight->slug) }}">{{ $hotPRight->categori->name }}</a>
                      </div>
-                     <h3 class="post-title"><a href="blog-post.html">Sed ut perspiciatis, unde omnis iste natus error sit</a></h3>
+                     <h3 class="post-title"><a href="{{ route('blog.content', $hotPRight->slug) }}">{{ $hotPRight->title }}</a></h3>
                      <ul class="post-meta">
-                        <li><a href="author.html">John Doe</a></li>
-                        <li>20 April 2018</li>
+                        <li><a href="author.html">{{ substr($hotPRight->users->name, 0,5) }}</a></li>
+                        <li>{{ \Carbon\Carbon::parse($hotPRight->created_at)->diffForHumans() }}</li>
                      </ul>
                   </div>
                </div>
-               <!-- /post -->
-
-               <!-- post -->
-               <div class="post post-thumb">
-                  <a class="post-img" href="blog-post.html"><img src="./img/hot-post-3.jpg" alt=""></a>
-                  <div class="post-body">
-                     <div class="post-category">
-                        <a href="category.html">Fashion</a>
-                        <a href="category.html">Lifestyle</a>
-                     </div>
-                     <h3 class="post-title"><a href="blog-post.html">Mel ut impetus suscipit tincidunt. Cum id ullum laboramus persequeris.</a></h3>
-                     <ul class="post-meta">
-                        <li><a href="author.html">John Doe</a></li>
-                        <li>20 April 2018</li>
-                     </ul>
-                  </div>
-               </div>
+               @endforeach
                <!-- /post -->
             </div>
          </div>

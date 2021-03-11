@@ -1,4 +1,8 @@
 @extends('theme-blog.content')
+
+@foreach($post as $pos)
+@section('title', $pos->title)
+@endforeach
 @section('content')
 @foreach($post as $pos)
 <div class="row">
@@ -10,7 +14,7 @@
                   <div class="row">
                      <div class="col-md-10">
                         <div class="post-category">
-                           <a href="category.html">{{ $pos->categori->name }}</a>
+                           <a href="{{ route('blog.category', $pos->slug) }}">{{ $pos->categori->name }}</a>
                         </div>
                         <h1>{{ $pos->title }}</h1>
                         <ul class="post-meta">
@@ -24,7 +28,7 @@
                </div>
             </div>
             <!-- /PAGE HEADER -->
-         {{ $pos->content }}
+         {!! $pos->content !!}
       
    </div>
 </div>

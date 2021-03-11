@@ -1,4 +1,5 @@
 @extends('theme-blog.content')
+@section('title', 'Blog Laravel 6')
 @section('content')
 <div class="row">
    <div class="col-md-12">
@@ -13,7 +14,7 @@
          <a class="post-img" href="{{ route('blog.content', $posts->slug) }}"><img src="{{ asset('uploads/posts/'. $posts->photo) }}" alt="{{ $posts->title }}" height="200px"></a>
          <div class="post-body">
             <div class="post-category">
-               <a href="category.html">{{ $posts->categori->name }}</a>
+               <a href="{{ route('blog.category', $posts->slug) }}">{{ $posts->categori->name }}</a>
             </div>
             <h3 class="post-title"><a href="{{ route('blog.content', $posts->slug) }}">{{ $posts->title }}</a></h3>
             <ul class="post-meta">

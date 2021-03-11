@@ -23,11 +23,9 @@
                   <h3 class="footer-title">Categories</h3>
                   <div class="category-widget">
                      <ul>
-                        <li><a href="#">Lifestyle <span>451</span></a></li>
-                        <li><a href="#">Fashion <span>230</span></a></li>
-                        <li><a href="#">Technology <span>40</span></a></li>
-                        <li><a href="#">Travel <span>38</span></a></li>
-                        <li><a href="#">Health <span>24</span></a></li>
+                        @foreach($categori as $category)
+                        <li><a href="{{ route('blog.category', $category->slug) }}">{{ $category->name }}<span>{{ $category->posts->count() }}</span></a></li>
+                        @endforeach
                      </ul>
                   </div>
                </div>
@@ -97,7 +95,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
    <script src="{{ asset('fronend/js/bootstrap.min.js') }}"></script>
    <script src="{{ asset('fronend/js/jquery.stellar.min.js') }}"></script>
    <script src="{{ asset('fronend/js/main.js') }}"></script>
-
 </body>
 
 </html>

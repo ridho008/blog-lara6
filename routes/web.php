@@ -12,7 +12,9 @@
 */
 Auth::routes();
 Route::get('/', 'BlogController@index');
-Route::get('/post/{slug}', 'BlogController@content')->name('blog.content');
+Route::get('/content/{slug}', 'BlogController@content')->name('blog.content');
+Route::get('/list-posts', 'BlogController@listBlog')->name('blog.list');
+Route::get('/category/{categori}', 'BlogController@listCategory')->name('blog.category');
 
 // Route::view('/home', 'home');
 

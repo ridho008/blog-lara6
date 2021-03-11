@@ -316,6 +316,10 @@
       <!-- Initialization  -->
       <script src="{{ asset('assets/js/sidebar-nav.js') }}"></script>
       <script src="{{ asset('assets/js/main.js') }}"></script>
+      <script src="{{ asset('assets/ckeditor/ckeditor.js') }}"></script>
+      <script>
+         CKEDITOR.replace('content');
+      </script>
    </body>
    <!-- End Body -->
 </html>

@@ -1,5 +1,10 @@
 
 @include('theme-blog.head')
+<?php
+use App\Categori;
+
+$categori = Categori::all();
+?>
    <!-- SECTION -->
    {{-- Hot Posts --}}
    {{-- {{ dd(Request::path()) }}  --}}

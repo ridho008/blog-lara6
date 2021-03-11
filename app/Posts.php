@@ -11,6 +11,7 @@ class Posts extends Model
 
    public function categori()
    {
+      // 1 post hanya bisa miliki 1 categori
       return $this->belongsTo('App\Categori');
    }
 

@@ -7,7 +7,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-   <title>Callie HTML Template</title>
+   <title>@yield('title')</title>
 
    <!-- Google font -->
    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CMuli:400,700" rel="stylesheet">
@@ -76,22 +76,8 @@
             <div class="container">
                <!-- nav -->
                <ul class="nav-menu">
-                  <li class="has-dropdown">
-                     <a href="index.html">Home</a>
-                     <div class="dropdown">
-                        <div class="dropdown-body">
-                           <ul class="dropdown-list">
-                              <li><a href="category.html">Category page</a></li>
-                              <li><a href="blog-post.html">Post page</a></li>
-                              <li><a href="author.html">Author page</a></li>
-                              <li><a href="about.html">About Us</a></li>
-                              <li><a href="contact.html">Contacts</a></li>
-                              <li><a href="blank.html">Regular</a></li>
-                           </ul>
-                        </div>
-                     </div>
-                  </li>
-                  <li class="has-dropdown megamenu">
+                  <li><a href="{{ url('/') }}">Home</a></li>
+                  {{-- <li class="has-dropdown megamenu">
                      <a href="#">Lifestyle</a>
                      <div class="dropdown tab-dropdown">
                         <div class="row">
@@ -286,8 +272,8 @@
                            </div>
                         </div>
                      </div>
-                  </li>
-                  <li><a href="#">Technology</a></li>
+                  </li> --}}
+                  <li><a href="{{ route('blog.list') }}">List Post</a></li>
                   <li><a href="#">Health</a></li>
                   <li><a href="#">Travel</a></li>
                </ul>
