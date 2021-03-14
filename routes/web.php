@@ -31,6 +31,12 @@ Route::group(['middleware' => 'auth'], function() {
    Route::get('/post/{id}/restorePost', 'PostController@restorePost')->name('post.restore-post');
    Route::delete('/post/{id}/deleteAny', 'PostController@deleteAny')->name('post.delete-any');
    Route::resource('/post', 'PostController');
+
+   // Controller Settings
+   Route::get('/settings', 'SettingController@index')->name('settings.index');
+   Route::put('/settings/{id}', 'SettingController@updateGeneral')->name('setting.update-general');
+   Route::put('/settings/{id}/socialMedia', 'SettingController@socialMedia')->name('setting.social-media');
+
 });
 
 

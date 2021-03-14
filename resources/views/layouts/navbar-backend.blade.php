@@ -69,6 +69,15 @@
                      </a>
                   </li>
                   <!-- End Users -->
+
+                  <!-- Settings -->
+                  <li class="u-sidebar-nav-menu__item">
+                     <a class="u-sidebar-nav-menu__link" href="{{ route('settings.index') }}">
+                        <span class="u-sidebar-nav-menu__item-icon">U</span>
+                        <span class="u-sidebar-nav-menu__item-title">Settings</span>
+                     </a>
+                  </li>
+                  <!-- End Settings -->
                </ul>
             </li>
             <!-- End UI Base -->
