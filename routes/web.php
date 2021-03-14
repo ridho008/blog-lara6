@@ -18,6 +18,7 @@ Route::post('/reply/submitMessage', 'ReplyController@submitMessage')->name('repl
 Route::get('/category/{categori}', 'BlogController@listCategory')->name('blog.category');
 Route::get('/tag/{tags}', 'BlogController@tags')->name('blog.tags');
 Route::get('/search', 'BlogController@search')->name('blog.search');
+// Route::get('/archive/post?{month=}&{year=}', 'BlogController@archive')->name('archive.post');
 
 // Route::view('/home', 'home');
 

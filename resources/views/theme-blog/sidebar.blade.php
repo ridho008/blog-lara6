@@ -52,8 +52,36 @@
                </div>
                <!-- /category widget -->
 
-               <!-- newsletter widget -->
+               <!-- archive widget -->
+               <?php
+               $archives = DB::table('posts')
+                   ->distinct()
+                   ->orderBy('updated_at')
+                   ->get([
+                       DB::raw('YEAR(`updated_at`) AS `year`'),
+                       DB::raw('MONTH(`updated_at`) AS `month`'),
+                   ]);
+               $archivesCount = DB::table('posts')
+                   ->distinct()
+                   ->orderBy('updated_at')
+                   ->count();
+               ?>
                <div class="aside-widget">
+                  <div class="section-title">
+                     <h2 class="title">Archives</h2>
+                  </div>
+                  <div class="category-widget">
+                     <ul>
+                        @foreach($archives as $archive)
+                        <li><a href="">{{ $archive->month. ' '. $archive->year }}<span>{{ $archivesCount }}</span></a></li>
+                        @endforeach
+                     </ul>
+                  </div>
+               </div>
+               <!-- /archive widget -->
+
+               <!-- newsletter widget -->
+               {{-- <div class="aside-widget">
                   <div class="section-title">
                      <h2 class="title">Newsletter</h2>
                   </div>
@@ -64,62 +92,31 @@
                         <button class="primary-button">Subscribe</button>
                      </form>
                   </div>
-               </div>
+               </div> --}}
                <!-- /newsletter widget -->
 
                <!-- post widget -->
+               <?php
+               $popularPosts = App\Posts::inRandomOrder()
+                ->take(4)
+                ->get();
+               ?>
                <div class="aside-widget">
                   <div class="section-title">
                      <h2 class="title">Popular Posts</h2>
                   </div>
                   <!-- post -->
+                  @foreach($popularPosts as $popularPost)
                   <div class="post post-widget">
-                     <a class="post-img" href="blog-post.html"><img src="./img/widget-3.jpg" alt=""></a>
+                     <a class="post-img" href="{{ route('blog.content', $popularPost->slug) }}"><img src="{{ asset('uploads/posts/' . $popularPost->photo) }}" alt=""></a>
                      <div class="post-body">
                         <div class="post-category">
-                           <a href="category.html">Lifestyle</a>
+                           <a href="{{ route('blog.category', $popularPost->slug) }}">{{ $popularPost->categori->name }}</a>
                         </div>
-                        <h3 class="post-title"><a href="blog-post.html">Ne bonorum praesent cum, labitur persequeris definitionem quo cu?</a></h3>
+                        <h3 class="post-title"><a href="{{ route('blog.content', $popularPost->slug) }}">{{ $popularPost->title }}</a></h3>
                      </div>
                   </div>
-                  <!-- /post -->
-
-                  <!-- post -->
-                  <div class="post post-widget">
-                     <a class="post-img" href="blog-post.html"><img src="./img/widget-2.jpg" alt=""></a>
-                     <div class="post-body">
-                        <div class="post-category">
-                           <a href="category.html">Technology</a>
-                           <a href="category.html">Lifestyle</a>
-                        </div>
-                        <h3 class="post-title"><a href="blog-post.html">Mel ut impetus suscipit tincidunt. Cum id ullum laboramus persequeris.</a></h3>
-                     </div>
-                  </div>
-                  <!-- /post -->
-
-                  <!-- post -->
-                  <div class="post post-widget">
-                     <a class="post-img" href="blog-post.html"><img src="./img/widget-4.jpg" alt=""></a>
-                     <div class="post-body">
-                        <div class="post-category">
-                           <a href="category.html">Health</a>
-                        </div>
-                        <h3 class="post-title"><a href="blog-post.html">Postea senserit id eos, vivendo periculis ei qui</a></h3>
-                     </div>
-                  </div>
-                  <!-- /post -->
-
-                  <!-- post -->
-                  <div class="post post-widget">
-                     <a class="post-img" href="blog-post.html"><img src="./img/widget-5.jpg" alt=""></a>
-                     <div class="post-body">
-                        <div class="post-category">
-                           <a href="category.html">Health</a>
-                           <a href="category.html">Lifestyle</a>
-                        </div>
-                        <h3 class="post-title"><a href="blog-post.html">Sed ut perspiciatis, unde omnis iste natus error sit</a></h3>
-                     </div>
-                  </div>
+                  @endforeach
                   <!-- /post -->
                </div>
                <!-- /post widget -->

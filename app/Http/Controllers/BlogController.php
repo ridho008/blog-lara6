@@ -21,6 +21,7 @@ class BlogController extends Controller
       $post = Posts::where('slug', $slug)->get();
       // dd($post);
       
+      // dd($archives);
       // dd($users);
       // $tags = Tags::where('posts_id', $post->id)->get();
       return view('blog.content', compact('post', 'tags'));
@@ -52,4 +53,9 @@ class BlogController extends Controller
       $title = $tags;
       return view('blog.list-post', compact('data', 'title'));
    }
+
+   // public function archive($month, $year)
+   // {
+
+   // }
 }
