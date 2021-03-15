@@ -76,7 +76,7 @@
                   <div class="category-widget">
                      <ul>
                         @foreach($archives as $archive)
-                        <li><a href="">{{ $archive->month }}<span>{{ $archivesCount }}</span></a></li>
+                        <li><a href="">{{ $archive->month . ' ' . $archive->year }}<span>{{ $archivesCount }}</span></a></li>
                         @endforeach
                      </ul>
                   </div>

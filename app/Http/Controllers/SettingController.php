@@ -75,4 +75,63 @@ class SettingController extends Controller
       session()->flash('success', 'Berhasil Perbarui Media Social');
       return redirect()->route('settings.index');
    }
+
+   public function contactUs(Request $request, $id)
+   {
+      $request->validate([
+         'email' => 'required|email',
+         'telp' => 'required',
+         'alamat' => 'required',
+         'maps' => 'required',
+      ]);
+
+      $data = [
+         'email' => $request->email,
+         'telp' => $request->telp,
+         'alamat' => $request->alamat,
+         'maps' => $request->maps,
+      ];
+
+      Setting::where('id', $id)
+               ->update($data);
+
+      session()->flash('success', 'Berhasil Perbarui Contact Us.');
+      return redirect()->route('settings.index');
+   }
+
+   public function aboutUs(Request $request, $id)
+   {
+      $request->validate([
+         'about' => 'required',
+      ]);
+
+      $data = [
+         'about' => $request->about,
+      ];
+
+      Setting::where('id', $id)
+               ->update($data);
+
+      session()->flash('success', 'Berhasil Perbarui About Us.');
+      return redirect()->route('settings.index');
+   }
+
+   public function metaData(Request $request, $id)
+   {
+      $request->validate([
+         'meta_desc' => 'required',
+         'meta_keyword' => 'required',
+      ]);
+
+      $data = [
+         'meta_description' => $request->meta_desc,
+         'meta_keyword' => $request->meta_keyword,
+      ];
+
+      Setting::where('id', $id)
+               ->update($data);
+
+      session()->flash('success', 'Berhasil Perbarui Meta Data.');
+      return redirect()->route('settings.index');
+   }
 }

@@ -9,6 +9,13 @@
 
    <title>@yield('title')</title>
 
+   <!-- Meta Tag -->
+   <meta name="description" content="{{ $setting->meta_description }}">
+   <meta name="keywords" content="{{ $setting->meta_keyword }}">
+   <meta name="google-site-verification" content="{{ $setting->google_analytics }}"/>
+   <meta name="author" content="Ridho Surya">
+   <meta name="robots" content="noindex,nofollow">
+
    <!-- Google font -->
    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CMuli:400,700" rel="stylesheet">
 
@@ -19,6 +26,7 @@
    <link rel="stylesheet" href="{{ asset('fronend/css/font-awesome.min.css') }}">
 
    <!-- Custom stlylesheet -->
+   <link rel="icon" href="{{ URL::asset('uploads/favicon/'.$setting->favicon) }}" type="image/x-icon"/>
    <link type="text/css" rel="stylesheet" href="{{ asset('fronend/css/style.css') }}" />
 
    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -40,16 +48,15 @@
             <div class="container">
                <!-- social -->
                <ul class="nav-social">
-                  <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                  <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                  <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                  <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                  <li><a href="{{ $setting->facebook }}"><i class="fa fa-facebook"></i></a></li>
+                  <li><a href="{{ $setting->twitter }}"><i class="fa fa-twitter"></i></a></li>
+                  <li><a href="{{ $setting->instagram }}"><i class="fa fa-instagram"></i></a></li>
                </ul>
                <!-- /social -->
 
                <!-- logo -->
                <div class="nav-logo">
-                  <a href="{{ url('/') }}" class="logo">Blog Lara6</a>
+                  <a href="{{ url('/') }}" class="logo"><img src="{{ asset('uploads/logo/' . $setting->logo) }}" alt="{{ $setting->logo }}"></a>
                </div>
                <!-- /logo -->
 
@@ -76,17 +83,20 @@
             <div class="container">
                <!-- nav -->
                <ul class="nav-menu">
-                  <li><a href="{{ url('/') }}">Home</a></li>
-                  <li class="has-dropdown megamenu">
+                  <li><a href="{{ url('/') }}"
+                     @if(Request::path() == '/')
+                     style="color:#ee4462;"
+                     @endif
+                     >Home</a></li>
+                  <li class="has-dropdown">
                      <a href="#">Categories</a>
                      <div class="dropdown">
                         <div class="dropdown-body">
                            <div class="row">
                               <div class="col-md-3">
-                                 <h4 class="dropdown-heading">Categories</h4>
                                  <ul class="dropdown-list">
                                     @foreach($categori as $category)
-                                    <li><a href="{{ route('blog.category', $category->slug) }}">{{ $category->name }}<span>{{ $category->posts->count() }}</a></li>
+                                    <li><a href="{{ route('blog.category', $category->slug) }}">{{ $category->name }}</a></li>
                                     @endforeach
                                  </ul>
                               </div>
@@ -94,9 +104,17 @@
                         </div>
                      </div>
                   </li>
-                  <li><a href="{{ route('blog.list') }}">List Post</a></li>
-                  {{-- <li><a href="#">Health</a></li>
-                  <li><a href="#">Travel</a></li> --}}
+                  <li><a href="{{ route('blog.list') }}"
+                     @if(Request::path() == 'list-posts')
+                     style="color:#ee4462;"
+                     @endif
+                     >List Post</a></li>
+                  <li><a href="{{ route('blog.about') }}"
+                     @if(Request::path() == 'about')
+                     style="color:#ee4462;"
+                     @endif
+                     >About</a></li>
+                  {{-- <li><a href="#">Travel</a></li> --}}
                </ul>
                <!-- /nav -->
             </div>
@@ -109,16 +127,14 @@
                <li><a href="index.html">Home</a></li>
                <li class="has-dropdown"><a>Categories</a>
                   <ul class="dropdown">
-                     <li><a href="#">Lifestyle</a></li>
-                     <li><a href="#">Fashion</a></li>
-                     <li><a href="#">Technology</a></li>
-                     <li><a href="#">Travel</a></li>
-                     <li><a href="#">Health</a></li>
+                     @foreach($categori as $category)
+                     <li><a href="{{ route('blog.category', $category->slug) }}">{{ $category->name }}</a></li>
+                     @endforeach
                   </ul>
                </li>
                <li><a href="about.html">About Us</a></li>
                <li><a href="contact.html">Contacts</a></li>
-               <li><a href="#">Advertise</a></li>
+               {{-- <li><a href="#">Advertise</a></li> --}}
             </ul>
             <button class="nav-close nav-aside-close"><span></span></button>
          </div>

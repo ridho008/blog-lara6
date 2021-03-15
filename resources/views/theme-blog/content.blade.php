@@ -1,9 +1,12 @@
 <?php
 use App\Categori;
 use App\Tags;
+use App\Setting;
 
 $categori = Categori::all();
 $tags = Tags::all();
+
+$setting = Setting::find(1);
 ?>
 @include('theme-blog.head')
 

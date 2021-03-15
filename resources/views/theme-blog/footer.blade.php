@@ -7,14 +7,13 @@
             <div class="col-md-3">
                <div class="footer-widget">
                   <div class="footer-logo">
-                     <a href="index.html" class="logo"><img src="./img/logo-alt.png" alt=""></a>
+                     <a href="index.html" class="logo"><img src="{{ asset('uploads/logo/'.$setting->logo) }}" alt=""></a>
                   </div>
-                  <p>Nec feugiat nisl pretium fusce id velit ut tortor pretium. Nisl purus in mollis nunc sed. Nunc non blandit massa enim nec.</p>
+                  <p>{!! substr($setting->about, 0, 50) !!}</p>
                   <ul class="contact-social">
-                     <li><a href="#" class="social-facebook"><i class="fa fa-facebook"></i></a></li>
-                     <li><a href="#" class="social-twitter"><i class="fa fa-twitter"></i></a></li>
-                     <li><a href="#" class="social-google-plus"><i class="fa fa-google-plus"></i></a></li>
-                     <li><a href="#" class="social-instagram"><i class="fa fa-instagram"></i></a></li>
+                     <li><a href="{{ $setting->facebook }}" class="social-facebook"><i class="fa fa-facebook"></i></a></li>
+                     <li><a href="{{ $setting->twitter }}" class="social-twitter"><i class="fa fa-twitter"></i></a></li>
+                     <li><a href="{{ $setting->instagram }}" class="social-instagram"><i class="fa fa-instagram"></i></a></li>
                   </ul>
                </div>
             </div>
@@ -44,13 +43,13 @@
             </div>
             <div class="col-md-3">
                <div class="footer-widget">
-                  <h3 class="footer-title">Newsletter</h3>
-                  <div class="newsletter-widget">
-                     <form>
-                        <p>Nec feugiat nisl pretium fusce id velit ut tortor pretium.</p>
-                        <input class="input" name="newsletter" placeholder="Enter Your Email">
-                        <button class="primary-button">Subscribe</button>
-                     </form>
+                  <h3 class="footer-title">Contact Us</h3>
+                  <div class="tags-widget">
+                     <ul>
+                        <li>{{ $setting->email }}</li>
+                        <li>{{ floatval($setting->telp) }}</li>
+                        <li>{{ $setting->alamat }}</li>
+                     </ul>
                   </div>
                </div>
             </div>
@@ -61,11 +60,11 @@
          <div class="footer-bottom row">
             <div class="col-md-6 col-md-push-6">
                <ul class="footer-nav">
-                  <li><a href="index.html">Home</a></li>
-                  <li><a href="about.html">About Us</a></li>
-                  <li><a href="contact.html">Contacts</a></li>
-                  <li><a href="#">Advertise</a></li>
-                  <li><a href="#">Privacy</a></li>
+                  <li><a href="{{ url('/') }}">Home</a></li>
+                  <li><a href="{{ route('blog.about') }}">About Us</a></li>
+                  {{-- <li><a href="contact.html">Contacts</a></li> --}}
+                  {{-- <li><a href="#">Advertise</a></li>
+                  <li><a href="#">Privacy</a></li> --}}
                </ul>
             </div>
             <div class="col-md-6 col-md-pull-6">

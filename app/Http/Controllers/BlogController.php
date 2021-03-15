@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Posts;
 use App\Categori;
 use App\Tags;
+use App\Setting;
 class BlogController extends Controller
 {
    public function index(Posts $posts)
@@ -54,8 +55,9 @@ class BlogController extends Controller
       return view('blog.list-post', compact('data', 'title'));
    }
 
-   // public function archive($month, $year)
-   // {
-
-   // }
+   public function about()
+   {
+      $setting = Setting::find(1);
+      return view('blog.about', compact('setting'));
+   }
 }

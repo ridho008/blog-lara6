@@ -18,6 +18,7 @@ Route::post('/reply/submitMessage', 'ReplyController@submitMessage')->name('repl
 Route::get('/category/{categori}', 'BlogController@listCategory')->name('blog.category');
 Route::get('/tag/{tags}', 'BlogController@tags')->name('blog.tags');
 Route::get('/search', 'BlogController@search')->name('blog.search');
+Route::get('/about', 'BlogController@about')->name('blog.about');
 // Route::get('/archive/post?{month=}&{year=}', 'BlogController@archive')->name('archive.post');
 
 // Route::view('/home', 'home');
@@ -36,6 +37,9 @@ Route::group(['middleware' => 'auth'], function() {
    Route::get('/settings', 'SettingController@index')->name('settings.index');
    Route::put('/settings/{id}', 'SettingController@updateGeneral')->name('setting.update-general');
    Route::put('/settings/{id}/socialMedia', 'SettingController@socialMedia')->name('setting.social-media');
+   Route::put('/settings/{id}/contactUs', 'SettingController@contactUs')->name('setting.contact-us');
+   Route::put('/settings/{id}/aboutUs', 'SettingController@aboutUs')->name('setting.about-us');
+   Route::put('/settings/{id}/metaData', 'SettingController@metaData')->name('setting.meta-data');
 
 });
 

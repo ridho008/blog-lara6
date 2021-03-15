@@ -1,3 +1,6 @@
+<?php
+$settingBack = App\Setting::find(1);
+?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
    <!-- Head -->
@@ -60,8 +63,8 @@
          <div class="u-header-left">
             <!-- Header Logo -->
             <a class="u-header-logo" href="index.html">
-               <img class="u-header-logo__icon" src="assets/svg/logo-mini.svg" alt="Awesome Icon">
-               <img class="u-header-logo__text" src="assets/svg/logo-text-light.svg" alt="Awesome">
+               <img class="u-header-logo__icon" src="{{ asset('uploads/logo/'.$settingBack->logo) }}" alt="Awesome Icon">
+               {{-- <img class="u-header-logo__text" src="assets/svg/logo-text-light.svg" alt="Awesome"> --}}
             </a>
             <!-- End Header Logo -->
          </div>
