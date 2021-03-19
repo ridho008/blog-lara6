@@ -61,6 +61,15 @@
                   </li>
                   <!-- End Posts -->
 
+                  <!-- File Manager -->
+                  <li class="u-sidebar-nav-menu__item">
+                     <a class="u-sidebar-nav-menu__link" href="{{ route('post.file-manager') }}">
+                        <span class="u-sidebar-nav-menu__item-icon">F</span>
+                        <span class="u-sidebar-nav-menu__item-title">File Manager</span>
+                     </a>
+                  </li>
+                  <!-- End File Manager -->
+
                   <!-- Users -->
                   <li class="u-sidebar-nav-menu__item">
                      <a class="u-sidebar-nav-menu__link" href="{{ route('user.index') }}">

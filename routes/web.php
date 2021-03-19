@@ -32,6 +32,7 @@ Route::group(['middleware' => 'auth'], function() {
    Route::get('/post/{id}/restorePost', 'PostController@restorePost')->name('post.restore-post');
    Route::delete('/post/{id}/deleteAny', 'PostController@deleteAny')->name('post.delete-any');
    Route::resource('/post', 'PostController');
+   Route::get('/fileManager', 'PostController@fileManager')->name('post.file-manager');
 
    // Controller Settings
    Route::get('/settings', 'SettingController@index')->name('settings.index');
@@ -42,6 +43,12 @@ Route::group(['middleware' => 'auth'], function() {
    Route::put('/settings/{id}/metaData', 'SettingController@metaData')->name('setting.meta-data');
 
 });
+
+ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+     \UniSharp\LaravelFilemanager\Lfm::routes();
+ });
+
+
 
 
 

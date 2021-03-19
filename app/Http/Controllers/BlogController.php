@@ -25,7 +25,7 @@ class BlogController extends Controller
       // dd($archives);
       // dd($users);
       // $tags = Tags::where('posts_id', $post->id)->get();
-      return view('blog.content', compact('post', 'tags'));
+      return view('blog.content', compact('post'));
    }
 
    public function listBlog()

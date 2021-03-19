@@ -199,4 +199,9 @@ class PostController extends Controller
         session()->flash('success', 'Post was deleted!');
         return redirect()->route('post.index');
     }
+
+    public function fileManager()
+    {
+        return view('admin.posts.file-manager');
+    }
 }

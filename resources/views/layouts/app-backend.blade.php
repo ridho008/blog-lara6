@@ -321,7 +321,13 @@ $settingBack = App\Setting::find(1);
       <script src="{{ asset('assets/js/main.js') }}"></script>
       <script src="{{ asset('assets/ckeditor/ckeditor.js') }}"></script>
       <script>
-         CKEDITOR.replace('content');
+         var options = {
+             filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+             filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+             filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+             filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
+         };
+         CKEDITOR.replace('content', options);
       </script>
    </body>
    <!-- End Body -->
