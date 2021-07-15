@@ -114,7 +114,12 @@
                      style="color:#ee4462;"
                      @endif
                      >About</a></li>
-                  {{-- <li><a href="#">Travel</a></li> --}}
+                  <?php if(!empty(Auth::user()->role)) : ?>
+
+                  <li><a href="/home">Dashboard</a></li>
+                  <?php else: ?>
+                  <li><a href="/login">Login</a></li>
+                  <?php endif; ?>
                </ul>
                <!-- /nav -->
             </div>

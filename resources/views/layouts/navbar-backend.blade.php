@@ -35,6 +35,7 @@
 
                <ul id="menuItemUIBase" class="u-sidebar-nav-menu u-sidebar-nav-menu--second-level" style="display: none;">
                   <!-- Colors -->
+                  <?php if(Auth::user()->role === 0) : ?>
                   <li class="u-sidebar-nav-menu__item">
                      <a class="u-sidebar-nav-menu__link" href="{{ route('categori.index') }}">
                         <span class="u-sidebar-nav-menu__item-icon">C</span>
@@ -86,7 +87,19 @@
                         <span class="u-sidebar-nav-menu__item-title">Settings</span>
                      </a>
                   </li>
+                  <?php endif; ?>
                   <!-- End Settings -->
+
+                  <!-- Posts -->
+                  <?php if(Auth::user()->role === 1) : ?>
+                  <li class="u-sidebar-nav-menu__item">
+                     <a class="u-sidebar-nav-menu__link" href="{{ route('post.index') }}">
+                        <span class="u-sidebar-nav-menu__item-icon">P</span>
+                        <span class="u-sidebar-nav-menu__item-title">Posts</span>
+                     </a>
+                  </li>
+                  <?php endif; ?>
+                  <!-- End Posts -->
                </ul>
             </li>
             <!-- End UI Base -->
