@@ -23,7 +23,7 @@ class CreateSettingsTable extends Migration
             $table->string('twitter')->nullable();
             $table->string('instagram')->nullable();
             $table->string('email')->nullable();
-            $table->integer('telp')->nullable();
+            $table->string('telp')->nullable();
             $table->text('alamat')->nullable();
             $table->text('maps')->nullable();
             $table->text('about')->nullable();

@@ -4,8 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+
+
 class Posts extends Model
 {
+   
    use SoftDeletes;
    protected $fillable = ['title', 'slug', 'categori_id', 'users_id', 'content', 'photo', 'created_at', 'updated_at'];
 
@@ -14,6 +17,10 @@ class Posts extends Model
       // 1 post hanya bisa miliki 1 categori
       return $this->belongsTo('App\Categori');
    }
+
+   // public function categori(){
+   //    return $this->belongsToMany('App\Categori');
+   // }
 
    public function tags()
    {

@@ -57,7 +57,7 @@ class BlogController extends Controller
 
    public function about()
    {
-      $setting = Setting::find(1);
+      $setting = Setting::findOrFail(1);
       return view('blog.about', compact('setting'));
    }
 }

@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+
 
 class CategoriTableSeeder extends Seeder
 {
@@ -12,8 +15,28 @@ class CategoriTableSeeder extends Seeder
     public function run()
     {
       DB::table('categori')->insert([
-            'name' => Str::random(10),
-            'slug' => Str::slug('whatasdjahskd asdkjhaklsd uiqyweuqwe', '-'),
+            'name' => 'Laptop',
+            'slug' => Str::slug('Laptop', '-'),
+      ]);
+
+      DB::table('categori')->insert([
+            'name' => 'Komputer',
+            'slug' => Str::slug('Komputer', '-'),
+      ]);
+
+      DB::table('categori')->insert([
+            'name' => 'Apple',
+            'slug' => Str::slug('Apple', '-'),
+      ]);
+
+      DB::table('categori')->insert([
+            'name' => 'Window',
+            'slug' => Str::slug('Window', '-'),
+      ]);
+
+      DB::table('categori')->insert([
+            'name' => 'Linux',
+            'slug' => Str::slug('Linux', '-'),
       ]);
     }
 }
